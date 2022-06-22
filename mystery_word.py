@@ -53,7 +53,7 @@ def play_game():
             print(f" Congrats! The secret word was: {secret_word}. YOU WON!!")
             break
     else: 
-        print("Sorry, you didn't win this time. Try again.")
+        print(f"Sorry, you didn't win this time. The secret word was: {secret_word}, Try again.")
 
 if __name__ == "__main__":
     play_game()
