@@ -8,6 +8,8 @@ def select_random_word(file):
     random_word = random.choice(word_list.read().split())
     word_list.close()
     print(random_word)
+    print('Can you guess a letter in the word??')
+    print(len(random_word) * " _ ", end="")
     return random_word
 
 secret_word = select_random_word("words.txt")
@@ -24,7 +26,7 @@ secret_word = select_random_word("words.txt")
 
 #get a guess
 def guess_the_letter():
-    user_guess = input('Guess a letter: ')
+    user_guess = input(' Guess a letter: ')
     if user_guess.isalpha():
             #check if all the characters in the user's guess are alphabets
         # letter = user_guess
@@ -45,11 +47,11 @@ def play_game():
     while failure_count > 0:
 
         guess = guess_the_letter()
-        if guess in {secret_word}:
+        if guess not in {secret_word}:
             print(f"Correct!! There is one or more {guess}'s in the secrect word.")
         else: 
             failure_count -= 1
-            print(f'Incorrect. There are no {guess} in the secret word. {failure_count} turn(s) left.')
+            print(f" Incorrect. There are no {guess}'s in the secret word. {failure_count} turn(s) left.")
 
     #maintain a list of all letters guessed
         letters_guessed = letters_guessed + guess.split()
@@ -58,11 +60,11 @@ def play_game():
             if letter in letters_guessed:
                 print(letter, end="")
             else: 
-                print(f"_", end="")
+                print(f" _ ", end="")
                 wrong_letter_count =+ 1
         #if there were no wrong letters, the player wins
         if wrong_letter_count == 0:
-            print(f" Congrats! The secreat word was: {secret_word}. YOU WON!!")
+            print(f" Congrats! The secret word was: {secret_word}. YOU WON!!")
             break
     else: 
         print("Sorry, you didn't win this time. Try again.")
