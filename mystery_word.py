@@ -54,16 +54,15 @@ def play_game():
     #maintain a list of all letters guessed
         letters_guessed = letters_guessed + guess.split()
         wrong_letter_count = 0
-        for x in secret_word:
-            if x in letters_guessed:
-                print({guess}, end="")
+        for letter in secret_word:
+            if letter in letters_guessed:
+                print(letter, end="")
             else: 
                 print(f"_", end="")
                 wrong_letter_count =+ 1
-
         #if there were no wrong letters, the player wins
         if wrong_letter_count == 0:
-            print(f"Congrats! The secreat word was: {secret_word}. YOU WON!!")
+            print(f" Congrats! The secreat word was: {secret_word}. YOU WON!!")
             break
     else: 
         print("Sorry, you didn't win this time. Try again.")
